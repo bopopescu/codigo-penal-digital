@@ -1,0 +1,36 @@
+
+.capitulo{
+  background-color: beige;
+  margin-top:10px;
+  margin-bottom:25px;
+  padding:0;
+  padding-right: 10px;
+  border-radius: 20px;
+  border-style: solid;
+}
+
+.capitulo-title{
+  margin:0;
+  padding-left: 10px;
+}
+
+.capitulo-resumen{
+  background-color: white;
+  -webkit-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
+  -moz-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
+  box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.clasificacion-del{
+  background-color: white;
+  -webkit-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
+  -moz-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
+  box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
