@@ -5,7 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { CapitulosComponent } from './capitulos/capitulos.component';
 import { TitulosComponent } from './titulos/titulos.component';
-import { AboutUsComponent } from './about-us/about-us.component'; 
+import { AboutUsComponent } from './about-us/about-us.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -13,15 +13,21 @@ const appRoutes: Routes = [
   },
   {
     path: 'titulos',
-    component: TitulosComponent
+    children:[
+        {
+          path:'',
+         component: TitulosComponent
+       },
+      {
+        path: 'capitulo/:name',
+        component: CapitulosComponent
+      },
+    ]
+
   },
   {
     path: 'contacto',
     component: ContactComponent
-  },
-  {
-    path: 'capitulos',
-    component: CapitulosComponent
   },
   {
     path: 'about-us',

@@ -1,67 +1,52 @@
     <!-- Page Content -->
-    <div class="container body">
 
+    <div class="container body">
+<header class="jumbotron">
+      <ngb-carousel>
+        <ng-template ngbSlide>
+          <img src="https://lorempixel.com/1200/500?r=1" alt="Random first slide">
+          <div class="carousel-caption">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img src="https://lorempixel.com/1200/500?r=2" alt="Random second slide">
+          <div class="carousel-caption">
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img src="https://lorempixel.com/1200/500?r=3" alt="Random third slide">
+          <div class="carousel-caption">
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+        </header>
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
+      <!-- <header class="jumbotron my-4">
         <h1 class="display-3">¡Bienvenido!</h1>
         <p class="lead">Proyecto FINAL. MUCHO TEXTO MUCHO TEXTO MUCHO TEXTO MUCHO TEXTO MUCHO TEXTO</p>
         <a routerLink="/titulos" class="btn btn-primary btn-lg">Ver delitos!</a>
-      </header>
+      </header> -->
 
       <!-- Page Features -->
       <div class="row text-center">
-
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4" *ngFor="let dato of variable.edges|keys">
           <div class="card">
             <img class="card-img-top" src="http://placehold.it/500x325" alt="">
             <div class="card-body">
-              <h4 class="card-title">Título Primero</h4>
-              <p class="card-text">Delitos contra el orden constitucional y seguirdad del estado...</p>
+              <h4 class="card-title">Título {{dato.node.name}}</h4>
+              <p class="card-text">{{dato.node.description}}</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver más</a>
+              <a href="/titulos/capitulo/{{dato.node.name}}" class="btn btn-primary">Ver más</a>
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Título Primero</h4>
-              <p class="card-text">Delitos contra el orden constitucional y seguirdad del estado...</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver más</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Título Primero</h4>
-              <p class="card-text">Delitos contra el orden constitucional y seguirdad del estado...</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver más</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Título Primero</h4>
-              <p class="card-text">Delitos contra el orden constitucional y seguirdad del estado...</p>
-            </div>
-            <div class="card-footer">
-              <a href="titulo_x.html" class="btn btn-primary">Ver más</a>
-            </div>
-          </div>
-        </div>
-
       </div>
       <!-- /.row -->
 
