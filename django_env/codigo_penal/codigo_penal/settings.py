@@ -55,8 +55,12 @@ MIDDLEWARE = [
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:4200/')
-CSRF_TRUSTED_ORIGINS = ('http://127.0.0.1:4200/')
+CORS_ORIGIN_WHITELIST = (
+    'http://127.0.0.1:4200/',
+    'http://codigo-penal.s3-website-us-west-2.amazonaws.com/')
+CSRF_TRUSTED_ORIGINS = (
+    'http://127.0.0.1:4200/',
+    'http://codigo-penal.s3-website-us-west-2.amazonaws.com/')
 
 # CORS_URLS_REGEX = r'^/api/v1/.*$'
 
@@ -112,22 +116,17 @@ WSGI_APPLICATION = 'codigo_penal.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': NAME,
-#         'USER': USER,
-#         'PASSWORD': PASSWORD,
-#         'HOST': HOST,
-#         'PORT': PORT,
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': NAME,
+        'USER': USER,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST,
+        'PORT': PORT,
     }
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
