@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "assets/animate.css";
+
 body {
   padding-top: 54px;
-}
+ }
 
 @media (min-width: 992px) {
   body {
@@ -10,6 +13,9 @@ body {
 }
 
 .body{
-  margin-top: 59px;
-  margin-bottom: 49px;
+  margin-top: 19px;
+  margin-bottom: 59px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  /*background-color: red;*/
 }

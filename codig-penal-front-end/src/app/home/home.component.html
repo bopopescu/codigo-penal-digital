@@ -1,31 +1,31 @@
     <!-- Page Content -->
 
     <div class="container body">
-<header class="jumbotron">
-      <ngb-carousel>
-        <ng-template ngbSlide>
-          <img src="https://lorempixel.com/1200/500?r=1" alt="Random first slide">
+      <ngb-carousel class="carousel">
+        <ng-template ngbSlide class="slide">
+          <img class="foto"src="assets/mapa-yuca.png"  width="1040" height="650"  alt="Random first slide">
           <div class="carousel-caption">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h2>Bienvenido al código penal del Estado de Yucatán</h2>
+            <p>Aquí encontraras resumenes y clasificaciones de los articulos y capítulos</p>
           </div>
         </ng-template>
         <ng-template ngbSlide>
-          <img src="https://lorempixel.com/1200/500?r=2" alt="Random second slide">
+          <img class="foto"src="assets/feminicidio.jpg"  width="1040" height="650" alt="Random second slide">
           <div class="carousel-caption">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h2 class="femi">Código penal de Yucatán debe homologarse con Federal para juzgar feminicidio</h2>
+            <p class="femi">Noticias.</p>
+            <a href="http://www.cimacnoticias.com.mx/noticia/c-digo-penal-de-yucat-n-debe-homologarse-con-federal-para-juzgar-feminicidio" class="btn btn-primary">Ver más</a>
           </div>
         </ng-template>
         <ng-template ngbSlide>
-          <img src="https://lorempixel.com/1200/500?r=3" alt="Random third slide">
+          <img class="foto" src="assets/mapa-yuca.png"  width="1040" height="650" alt="Random third slide">
           <div class="carousel-caption">
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h2>And no wrap after last slide.</h2>
+            <p>This carousel uses customized default values.</p>
           </div>
         </ng-template>
       </ngb-carousel>
-        </header>
+
       <!-- Jumbotron Header -->
       <!-- <header class="jumbotron my-4">
         <h1 class="display-3">¡Bienvenido!</h1>
@@ -33,9 +33,28 @@
         <a routerLink="/titulos" class="btn btn-primary btn-lg">Ver delitos!</a>
       </header> -->
 
-      <!-- Page Features -->
-      <div class="row text-center">
-        <div class="col-lg-3 col-md-6 mb-4" *ngFor="let dato of variable.edges|keys">
+      <div class="row row-cards">
+        <h3>Clasificaciones de Crimenes</h3>
+        <p>En esta sección se tienen las diferentes clasificaciones de los crimenes y sus tipos.</p>
+        <hr>
+      </div>
+      <div class="category" *ngFor="let dato of categories.edges| keys">
+        {{dato.node.name}}
+        <ngb-tabset >
+          <div *ngFor="let crime of dato.node.crimetypeSet.edges| keys">
+            <ngb-tab title="{{crime.node.crimeName}}" >
+              <ng-template ngbTabContent>
+                <p>{{crime.node.description}}</p>
+              </ng-template>
+            </ngb-tab>
+          </div>
+        </ngb-tabset>
+      </div>
+
+      <div class="row row-cards"><h3>Títulos más consultados</h3></div>
+      <hr>
+      <div class="row text-center row-cards">
+        <div class="col-lg-3 col-md-6 mb-4" *ngFor="let dato of titles.edges| keys">
           <div class="card">
             <img class="card-img-top" src="http://placehold.it/500x325" alt="">
             <div class="card-body">
@@ -49,6 +68,5 @@
         </div>
       </div>
       <!-- /.row -->
-
     </div>
     <!-- /.container -->

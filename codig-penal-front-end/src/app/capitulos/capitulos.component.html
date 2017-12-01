@@ -1,97 +1,72 @@
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+
 <div class="container body">
-  <div class="row">
+  <div class="row subnav">
     <a routerLink="/titulos">regresar</a>
   </div>
-
   <div class="row">
-
     <!-- Post Content Column -->
-    <div class="col-lg-8" >
-
-<!--
-<div *ngFor="let chapter of chapters.chapterSet.edges| keys">
-  {{chapter}}
-</div> -->
-
-      <h1> Título {{titles.name}}</h1>
-      <h3> {{titles.description}} </h3>
-      <div class="capitulo" *ngFor="let chapter of titles.chapterSet.edges| keys">
-        <!-- Title -->
+    <div class="col-lg-10" >
+      <h1 class="h1"> Título {{titles.name}}</h1>
+      <hr>
+      <h4> {{titles.description}} </h4>
+      <ngb-accordion class="capitulo" #acc="ngbAccordion" *ngFor="let chapter of titles.chapterSet.edges| keys">
         <h1 class="capitulo-title">Capítulo {{chapter.node.chapter}}</h1>
-        <h2 class="mt-4"> </h2>
-
-        <!-- Author -->
-        <!-- <p class="lead">
-                  by
-                  <a href="#">Start Bootstrap</a>
-                </p> -->
-
-                <hr>
-  <!-- Date/Time -->
-        <!-- <p>Posted on January 1, 2017 at 12:00 PM</p> -->
-
-        <!-- <hr> -->
-
-        <!-- Preview Image -->
-        <!-- <img class="img-fluid rounded" src="http://placehold.it/900x300" alt=""> -->
-
-        <!-- <hr> -->
-
-        <!-- Post Content -->
-        <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p> -->
-
-        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-         -->
-        <div class="capitulo-resumen"  *ngFor="let article of chapter.node.articleSet.edges|keys">
-          <h2 class="mt-4">Artículo {{article.node.number}}</h2>
-          <!-- <blockquote class="blockquote">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote> -->
-          <p>{{article.node.body}}</p>
-          <hr>
-        </div>
-        <!-- <div class="capitulo-resumen">
-          <h2 class="mt-4">Artículo 138 </h2>
-
-          <blockquote class="blockquote">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
-          <hr>
-
-        </div> -->
-
-        <div class="clasificacion-del">
-          <h3>Clasificación</h3>
-          <hr>
-          <ol>
-            <li>
-              CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: Doloso
-            </li>
-          </ol>
-        </div>
-      </div>
-
+        <ngb-panel id="toggle-1" title="Capítulo {{chapter.node.chapter}}">
+          <ng-template ngbPanelContent>
+            <h2 class="mt-4"> {{chapter.node.description}}</h2>
+            <div class="capitulo-resumen"  *ngFor="let article of chapter.node.articleSet.edges|keys">
+              <h2 class="mt-4">Artículo {{article.node.number}}</h2>
+              <!-- <blockquote class="blockquote">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer class="blockquote-footer">Someone famous in
+                  <cite title="Source Title">Source Title</cite>
+                </footer>
+              </blockquote> -->
+              <p>{{article.node.body}}</p>
+              <hr>
+            </div>
+            <div class="clasificacion-del">
+              <h3>Clasificación</h3>
+              <hr>
+              <ol>
+                <li>
+                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
+                </li>
+                <li>
+                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
+                </li>
+                <li>
+                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
+                </li>
+                <li>
+                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
+                </li>
+              </ol>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
 
     </div>
 
-    <!-- Sidebar Widgets Column -->
-    <div class="col-md-4">
-
-      <!-- B Widget -->
-      <div class="card my-4">
+    <!-- <div class="col-md-4"> -->
+      <!-- <div class="card my-4">
         <h5 class="card-header">Búsqueda</h5>
         <div class="card-body">
           <div class="input-group">
@@ -101,7 +76,7 @@
             </span>
           </div>
         </div>
-      </div>
+      </div>  -->
 
       <!-- Categories Widget -->
       <!-- <div class="card my-4">
@@ -146,7 +121,7 @@
         </div>
       </div> -->
 
-    </div>
+    <!-- </div> -->
 
   </div>
 

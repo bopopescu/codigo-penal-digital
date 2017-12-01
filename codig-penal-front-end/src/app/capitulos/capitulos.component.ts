@@ -1,4 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
@@ -16,16 +20,15 @@ import 'rxjs/add/operator/map';
 })
 
 export class CapitulosComponent implements OnInit {
-  titles: Observable<any>;
-  variable:any;
-  loading:boolean;
-  sample:any;
-   constructor(private apollo: Apollo, private route:ActivatedRoute) {}
+  public titles: any;
+  closeResult: string;
 
-   ngOnInit() {
-     console.log(this.route.snapshot.params['name']);
-    this.titles=this.apollo.use('blog').watchQuery({
-       query: gql`
+  constructor(private modalService: NgbModal,private apollo: Apollo, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    console.log(this.route.snapshot.params['name']);
+    this.titles = this.apollo.use('blog').watchQuery({
+      query: gql`
        query Titles($name:String!){
        title2(name:$name) {
          name
@@ -34,6 +37,7 @@ export class CapitulosComponent implements OnInit {
        	  edges {
        	    node {
        	      chapter
+              description
               articleSet {
                 edges {
                   node {
@@ -47,20 +51,34 @@ export class CapitulosComponent implements OnInit {
        	}
        }
      }
-       `,variables: {
-        name:this.route.snapshot.params['name']
+       `, variables: {
+        name: this.route.snapshot.params['name']
       }
-     }).valueChanges;
+    }).valueChanges;
 
-     this.titles.subscribe( ({data}) => {
-       this.titles = data.title2;
-       console.log(data);
-   });
-   console.log(this.titles);
+    this.titles.subscribe(({ data }) => {
+      this.titles = data.title2;
+     });
+  }
 
-     // console.log(res.data.titulos.length," ",res.data.titulos.edges[0].node.name, " | " , res.data.titulos.edges[0].node.description));
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
     }
-
+  }
 
 
 

@@ -5,6 +5,7 @@ import { AppRouting } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from "./shared/shared.module";
+
 import { AppComponent } from './app.component';
 
 import { ContactComponent } from './contact/contact.component';
@@ -13,9 +14,9 @@ import { CapitulosComponent } from './capitulos/capitulos.component';
 import { TitulosComponent } from './titulos/titulos.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 
-
 // Apollo
 import { GraphQLModule } from './graphql.module';
+
 @Pipe({ name: 'keys',  pure: false })
 export class KeysPipe implements PipeTransform {
     transform(value: any, args?: any[]): any[] {
@@ -35,6 +36,7 @@ export class KeysPipe implements PipeTransform {
       }
     }
 }
+
 @NgModule({
   declarations: [
     AppComponent,KeysPipe,
@@ -50,7 +52,7 @@ export class KeysPipe implements PipeTransform {
     AppRouting,
     NgbModule.forRoot(),
     SharedModule,
-    GraphQLModule
+    GraphQLModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
