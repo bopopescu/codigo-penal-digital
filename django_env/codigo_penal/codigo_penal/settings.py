@@ -30,11 +30,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin', 'django.contrib.auth',
-    'django.contrib.contenttypes', 'django.contrib.sessions',
-    'django.contrib.messages', 'django.contrib.staticfiles', 'titulos_app','rest_framework',
-    'graphene_django',    'corsheaders',    'django_filters',
-
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'titulos_app',
+    'rest_framework',
+    'graphene_django',
+    'corsheaders',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -106,17 +112,22 @@ WSGI_APPLICATION = 'codigo_penal.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': NAME,
+#         'USER': USER,
+#         'PASSWORD': PASSWORD,
+#         'HOST': HOST,
+#         'PORT': PORT,
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': NAME,
-        'USER': USER,
-        'PASSWORD': PASSWORD,
-        'HOST': HOST,
-        'PORT': PORT,
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -139,10 +150,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-GRAPHENE = {
-    'SCHEMA': 'codigo_penal.schema.schema'
-}
+GRAPHENE = {'SCHEMA': 'codigo_penal.schema.schema'}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
