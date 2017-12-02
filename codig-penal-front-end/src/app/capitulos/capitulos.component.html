@@ -25,44 +25,88 @@
       <h1 class="h1"> Título {{titles.name}}</h1>
       <hr>
       <h4> {{titles.description}} </h4>
-      <ngb-accordion class="capitulo" #acc="ngbAccordion" *ngFor="let chapter of titles.chapterSet.edges| keys">
-        <h1 class="capitulo-title">Capítulo {{chapter.node.chapter}}</h1>
-        <ngb-panel id="toggle-1" title="Capítulo {{chapter.node.chapter}}">
-          <ng-template ngbPanelContent>
-            <h2 class="mt-4"> {{chapter.node.description}}</h2>
-            <div class="capitulo-resumen"  *ngFor="let article of chapter.node.articleSet.edges|keys">
-              <h2 class="mt-4">Artículo {{article.node.number}}</h2>
-              <!-- <blockquote class="blockquote">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in
-                  <cite title="Source Title">Source Title</cite>
-                </footer>
-              </blockquote> -->
-              <p>{{article.node.body}}</p>
-              <hr>
-            </div>
-            <div class="clasificacion-del">
-              <h3>Clasificación</h3>
-              <hr>
-              <ol>
-                <li>
-                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
-                </li>
-                <li>
-                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
-                </li>
-                <li>
-                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
-                </li>
-                <li>
-                  CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn btn-outline-primary" (click)="open(content)">Doloso</button>
-                </li>
-              </ol>
-            </div>
-          </ng-template>
-        </ngb-panel>
-      </ngb-accordion>
+      <div id="accordion" role="tablist" aria-multiselectable="true">
 
+        <div class="card"  *ngFor="let chapter of titles.chapterSet.edges| keys">
+          <div class="card-header" role="tab" id="heading{{chapter.node.chapter}}">
+            <h4 class="mb-0 capitulo-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{chapter.node.chapter}}" aria-expanded="true" attr.aria-controls="collapse{{chapter.node.chapter}}">
+                Capítulo  {{chapter.node.chapter}}
+              </a>
+            </h4>
+          </div>
+
+          <div id="collapse{{chapter.node.chapter}}" class="collapse show" role="tabpanel" attr.aria-labelledby="heading{{chapter.node.chapter}}">
+            <div class="card-block capitulo">
+                <h3 class="mt-4 "> {{chapter.node.description}}</h3>
+                <div class="capitulo-resumen"  *ngFor="let article of chapter.node.articleSet.edges|keys">
+                  <h3 class="mt-4">Artículo {{article.node.number}}</h3>
+                  <hr>
+                  <!-- <blockquote class="blockquote">
+                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer class="blockquote-footer">Someone famous in
+                      <cite title="Source Title">Source Title</cite>
+                    </footer>
+                  </blockquote> -->
+                  <p>{{article.node.body}}</p>
+                  <hr>
+                </div>
+              </div>
+
+              <div class="clasificacion-del">
+                <h3>Clasificación</h3>
+                <hr>
+                <ol>
+                  <li>
+                    CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn" (click)="open(content)">Doloso</button>
+                  </li>
+                  <li>
+                    CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn" (click)="open(content)">Doloso</button>
+                  </li>
+                  <li>
+                    CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn" (click)="open(content)">Doloso</button>
+                  </li>
+                  <li>
+                    CLASIFICACIÓN POR EL ELEMENTO INTERNO O DE CULPABILIDAD: <button class="btn" (click)="open(content)">Doloso</button>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- <div class="card">
+          <div class="card-header" role="tab" id="headingTwo">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Collapsible Group Item #2
+              </a>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="card-block">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="headingThree">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Collapsible Group Item #3
+              </a>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-block">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+      </div> -->
     </div>
 
     <!-- <div class="col-md-4"> -->

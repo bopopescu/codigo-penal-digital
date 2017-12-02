@@ -1,19 +1,19 @@
 
 .capitulo{
-  /*background-color: beige;*/
-  /*margin-top:30px;
-  margin-bottom:25px;*/
   padding:0;
   padding-right: 20px;
-  /*border-radius: 20px;*/
-  /*border-style: solid;*/
-}
-
+ }
+ .card{
+   margin: 5px;
+   padding:10px;
+ }
 .capitulo-title{
   margin:0;
   padding-left: 10px;
 }
-
+.capitulo-title a{
+  color:#00796B;
+}
 .capitulo-resumen{
   -webkit-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
   -moz-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
@@ -21,14 +21,19 @@
   margin-left: 10px;
   padding-left: 10px;
   padding-right: 10px;
+   color:white;
+   background-color: #26A69A;
+
 }
 
 .clasificacion-del{
-  background-color: white;
-  -webkit-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
+   -webkit-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
   -moz-box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
   box-shadow: 11px -8px 22px -2px rgba(61,57,61,1);
   margin-left: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  color:#00796B;
+    background-color: white;
+
 }
