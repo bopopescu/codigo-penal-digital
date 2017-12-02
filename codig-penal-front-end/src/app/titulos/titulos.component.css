@@ -22,7 +22,7 @@
     transition: all .3s;
 }
 .cb:hover {
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 137, 123,.8);
     color: #FFF;
     transition: all .3s;
 }
@@ -35,4 +35,13 @@
 
 .card{
   height: 100%;
+  background: rgb(0, 137, 123);
+  color:#FFF;
+}
+.card-body,.head{
+  background: #26A69A;
+}
+
+a{
+  color:white;
 }

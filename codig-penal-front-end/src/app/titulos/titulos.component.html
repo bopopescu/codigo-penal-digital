@@ -5,8 +5,8 @@
     <div class="row body">
         <div class="col-sm-4" *ngFor="let dato of titles | async | select: 'allTit' ">
             <div class="card rm">
-                <h5 class="head"><a routerLink="/titulos/capitulo/{{dato.name}}">Título {{dato.name}}</a>  <span class="glyph-icon flaticon-libra float-right"></span></h5>
-                <img class="card-img-top" src="vendor/imagenes/delito_1.jpg" alt="Card image cap">
+                <h5 class="head"><a routerLink="/titulos/capitulo/{{dato.name}}" ngbTooltip="Da clic para ver más"> Título {{dato.name}}</a>  <span class="glyph-icon flaticon-libra float-right"></span></h5>
+                <img class="card-img-top" src="assets/200x200.png" alt="Card image cap">
                 <div class="card-body cb">
                     <p class="card-text">{{dato.description}}</p>
                      <!-- <div class="" *ngFor="let chap of dato.chapterSet.edges | keys">
