@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
  this.titles= this.apollo.use('blog').watchQuery({
       query: gql`
       query{
-           titulos:allTitles{
+           titulos:allTitles(first:4){
              edges {
                node {
                  name
