@@ -1,14 +1,14 @@
     <!-- Page Content -->
     <ngb-carousel class="carousel">
-      <ng-template ngbSlide class="slide">
-        <img class="foto"src="assets/merida.jpg"  width="1080" height="650"  alt="Random first slide">
+      <ng-template ngbSlide>
+        <img class="foto"src="assets/merida.jpg"  alt="Random first slide">
         <div class="carousel-caption">
           <h1 class= "femi">Bienvenido al código penal del Estado de Yucatán</h1>
           <h4 class="femi">Aquí encontraras resumenes y clasificaciones de los articulos y capítulos</h4>
         </div>
       </ng-template>
       <ng-template ngbSlide>
-        <img class="foto"src="assets/feminicidio.jpg"  width="1040" height="650" alt="Random second slide">
+        <img class="foto"src="assets/feminicidio.jpg" alt="Random second slide">
         <div class="carousel-caption">
           <h2 class="femi">Código penal de Yucatán debe homologarse con Federal para juzgar feminicidio</h2>
           <!-- <h4 class="femi">Noticias.</h4> -->
@@ -16,10 +16,10 @@
         </div>
       </ng-template>
       <ng-template ngbSlide>
-        <img class="foto" src="assets/mapa-yuca.png"  width="1040" height="650" alt="Random third slide">
+        <img class="foto" src="assets/chichen_itza.jpg"  alt="Random third slide">
         <div class="carousel-caption">
-          <h2>And no wrap after last slide.</h2>
-          <p>This carousel uses customized default values.</p>
+          <h2></h2>
+          <p></p>
         </div>
       </ng-template>
     </ngb-carousel>
@@ -57,7 +57,7 @@
             <div class="col-lg-8 mx-auto text-center">
               <h2 class="section-heading text-white">Sobre la página</h2>
               <hr class="light my-4">
-              <p class="text-faded mb-6 text-white">Encontraras un catálogo de delitos delitos establecidos en el Código Penal del Estado de Yucatán.</p>
+              <p class="text-faded mb-6 text-white">Encontraras un catálogo de delitos establecidos en el Código Penal del Estado de Yucatán.</p>
               <!-- <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a> -->
             </div>
           </div>
@@ -74,7 +74,7 @@
       <div class="row text-center row-cards">
         <div class="col-lg-3 col-md-6 mb-4" *ngFor="let dato of titles.edges| keys">
           <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <img class="card-img-top" src="assets/titulos/{{dato.node.picture}}" alt="">
             <div class="card-body">
               <h4 class="card-title">Título {{dato.node.name}}</h4>
               <p class="card-text">{{dato.node.description}}</p>
@@ -87,7 +87,7 @@
       </div>
       <!-- /.row -->
       <div class="row row-cards">
-        <div class="col-sm-6">
+        <div class="col-sm-4 col-md-4 mb-4">
           <div class="card secondary">
             <div class="card-body">
               <h4 class="card-title">Código Penal Federal</h4>
@@ -96,7 +96,16 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4 col-md-4 mb-4">
+          <div class="card secondary">
+            <div class="card-body">
+              <h4 class="card-title">CONSTITUCIÓN POLÍTICA DE LOS ESTADOS UNIDOS MEXICANOS</h4>
+              <p class="card-text"> Un enlace para ver más a detalle la constitución mexicana</p>
+              <a target="_blank" href="http://www.dof.gob.mx/constitucion/marzo_2014_constitucion.pdf" class="btn primary">¡Saber más!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4 mb-4">
           <div class="card secondary">
             <div class="card-body">
               <h4 class="card-title">Reglamento de vialidad</h4>
@@ -107,20 +116,20 @@
         </div>
       </div>
 
-      <div class="row row-cards primary">
-        <div class="col-sm-6">
-          <div class=" ">
+      <div class="row primary">
+        <div class="col-sm-6 col-md-6 mb-4">
+          <div class="">
             <div class="card-body text-center">
                <h2 class="card-text text-white">El contenido de esta página se obtuvo del libro "<i>Legislación Penal del Estado de Yucatán</i>"</h2>
               <!-- <a target="_blank" href="http://www.diputados.gob.mx/LeyesBiblio/pdf/9_171117.pdf" class="btn primary">¡Saber más!</a> -->
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-md-6 mb-4">
           <div class="">
             <div class="card-body text-center">
               <!-- <h2 class="card-title">Reglamento de vialidad</h2> -->
-              <p class="card-text" ><img src="assets/legislacion.jpg"width="300" height="270" alt=""></p>
+              <p class="card-text" ><img class="text_img" src="assets/legislacion.jpg" alt=""></p>
               <!-- <a target="_blank" href="http://www.yucatan.gob.mx/docs/pdf/Reglamento_vialidad.pdf" class="btn primary">¡Saber más!</a> -->
             </div>
           </div>

@@ -28,6 +28,7 @@ export class TitulosComponent implements OnInit {
           id
           name
           description
+          picture
           chapterSet {
             edges {
               node {

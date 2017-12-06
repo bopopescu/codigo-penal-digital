@@ -52,30 +52,28 @@
                       <cite title="Source Title">Source Title</cite>
                     </footer>
                   </blockquote> -->
-                  <div [innerHTML]="article.node.body">
+                  <div class="article-body"[innerHTML]="article.node.body">
                   </div>
                   <hr>
                 </div>
               </div>
-
               <div class="clasificacion-del">
                 <h3>Clasificación</h3>
                 <hr>
-                <ol *ngFor="let elemento of test">
-                  <li>
-                    {{elemento.class}}:
-                     <div >
-                      <button *ngFor="let t of elemento.tipo"class="btn primary" #boton (click)="open(content,t)">{{t}}</button>
-                    </div>
-                  </li>
+                <ol *ngFor="let entry of classification">
+                       <div *ngIf="entry.chapter==chapter.node.chapter">
+                          <li *ngFor="let tipo of entry.classifications">
+                            {{tipo.class}}
+                            <div class="">
+                              <button *ngFor="let t of tipo.tipos"class="btn primary btn-xs  col-xs-4 " style="margin-bottom:4px;white-space: normal" #boton (click)="open(content,t)">{{t}}</button>
+                            </div>
+                          </li>
+                  </div>
                 </ol>
               </div>
             </div>
           </div>
         </div>
-
-
-
 
         <!-- <div class="card">
           <div class="card-header" role="tab" id="headingTwo">

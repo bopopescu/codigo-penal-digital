@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
                node {
                  name
                  description
+                 picture
                }
              }
             }

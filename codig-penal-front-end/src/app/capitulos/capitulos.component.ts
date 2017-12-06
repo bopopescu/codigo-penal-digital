@@ -32,7 +32,8 @@ export class CapitulosComponent implements OnInit {
 //           'tipo': ['doloso','culposos']
 // }];
 crimes:any;
-test:any;
+classification:any;
+chapters:any;
 value:string;
 definition:string;
   constructor(private modalService: NgbModal,private apollo: Apollo, private route: ActivatedRoute) { }
@@ -57,19 +58,30 @@ definition:string;
                   }
                 }
               }
+              categorycrimeSet {
+  edges {
+    node {
+      crimeType {
+        crimeName
+        category {
+          name
+        }
+      }
+    }
+  }
+}
        	    }
        	  }
        	}
        }
-
-  allCrimeType {
-    edges {
-      node {
-        crimeName
-        description
+    allCrimeType {
+      edges {
+        node {
+          crimeName
+          description
+        }
       }
     }
-  }
      }
        `, variables: {
         name: this.route.snapshot.params['name']
@@ -78,23 +90,80 @@ definition:string;
 
     this.titles.subscribe(({ data }) => {
       this.titles = data.title2;
+
+      this.classification = [];
+
+
+       for(let i = 0; i <data.title2.chapterSet.edges.length; i++ ){
+         var capitulo = data.title2.chapterSet.edges[i].node.chapter;
+         var chapter={};
+        console.log("for ",capitulo);
+        chapter['chapter']=capitulo;
+        chapter['classifications']=[];
+        for(let j = 0; j < data.title2.chapterSet.edges[i].node.categorycrimeSet.edges.length; j++)
+        {
+          var element={};
+
+          element['class']=data.title2.chapterSet.edges[i].node.categorycrimeSet.edges[j].node.crimeType.category.name;
+          element['tipos']=[data.title2.chapterSet.edges[i].node.categorycrimeSet.edges[j].node.crimeType.crimeName];
+          // console.log(data.title2.chapterSet.edges[i].node.categorycrimeSet.edges[j].node.crimeType.category.name);
+
+          var flag = true;
+          if(chapter['classifications'].length){
+            for(let x =0; x < chapter['classifications'].length; x++){
+              if(element['class']==chapter['classifications'][x]['class']){
+                chapter['classifications'][x]['tipos'].push(element['tipos']);
+                flag = false;
+              }
+            }
+            if(flag){
+              chapter['classifications'].push(element);
+            }
+          }else{
+            chapter['classifications'].push(element);
+          }
+
+        }
+
+         this.classification.push(chapter);
+
+      }
+      console.log("class ",this.classification);
       this.crimes = data.allCrimeType;
      });
-     this.test = [];
-    var element = {};
-     element['class']='CLASIFICACIÓN POR EL ELEMENTO INTERNO';
-     element['tipo']=[];
-     element['tipo'].push('dolosos');
-     element['tipo'].push('culposos');
-     this.test.push(
-       element,
-   );
+    //  this.classification = [];
+    // var chapter = {};
+    // var element={}
+ //     element['class']='CLASIFICACIÓN POR EL ELEMENTO INTERNO';
+ //     element['tipos']=[];
+ //     element['tipos'].push('dolosos');
+ //     element['tipos'].push('culposos');
+ //     chapter['chapter']="1";
+ //     chapter['clasifications']=[]
+ //     chapter['clasifications'].push(
+ //       element
+ //   );
+ //  this.classification.push(chapter);
+ //
+ //  var element={}
+ //   element['class']='CLASIFICACIÓN EN FUNCIÓN DE SU GRAVEDAD';
+ //   element['tipos']=[];
+ //   element['tipos'].push('delitos graves');
+ //  this.classification[0]['clasifications'].push(element);
+ //  var chapter = {};
+ //  var element={}
+ //   element['class']='CLASIFICACIÓN POR EL ELEMENTO INTERNO';
+ //   element['tipos']=[];
+ //   element['tipos'].push('dolosos');
+ //   chapter['chapter']="2";
+ //   chapter['clasifications']=[]
+ //   chapter['clasifications'].push(
+ //     element
+ // );
+ // this.classification.push(chapter);
   }
 
-   open(content,value:string) {
-
-    console.log(value,this.crimes.edges.length);
-    // this.definition = definition;
+   open(content,value:any) {
     this.value = value;
     this.definition= this.searchType(value);
     this.modalService.open(content).result.then((result) => {
@@ -106,8 +175,11 @@ definition:string;
     });
   }
 
-  searchType(name:string){
+  getElement(chapter){
+    return this.classification[chapter];
+  }
 
+  searchType(name:string){
     for(let i = 0; i<this.crimes.edges.length;i++)
     {
       if(name == this.crimes.edges[i].node.crimeName){
