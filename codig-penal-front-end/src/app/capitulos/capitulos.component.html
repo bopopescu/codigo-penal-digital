@@ -52,8 +52,14 @@
                       <cite title="Source Title">Source Title</cite>
                     </footer>
                   </blockquote> -->
-                  <div class="article-body"[innerHTML]="article.node.body">
+                  <div class="article-body" [innerHTML]="article.node.body">
+                    <!-- {{article.node.body}} -->
+
+
                   </div>
+                  <ol>
+                    <li class="u" *ngFor="let list of article.node.articlelistSet.edges">{{list.node.item}}</li>
+                  </ol>
                   <hr>
                 </div>
               </div>

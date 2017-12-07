@@ -55,6 +55,13 @@ definition:string;
                   node {
                     number
                     body
+                    articlelistSet {
+                edges {
+                  node {
+                    item
+                  }
+                }
+              }
                   }
                 }
               }
