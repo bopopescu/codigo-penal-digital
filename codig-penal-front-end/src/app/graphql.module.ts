@@ -5,8 +5,8 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-// const uri = 'http://ec2-54-215-236-30.us-west-1.compute.amazonaws.com:8888/graphql';
-const uri ='http://127.0.0.1:8888/graphql';
+const uri = 'http://ec2-18-144-5-198.us-west-1.compute.amazonaws.com/graphql';
+// const uri ='http://127.0.0.1:8888/graphql';
 
 @NgModule({
   exports: [
@@ -26,5 +26,4 @@ export class GraphQLModule {
       cache: new InMemoryCache()
     },'blog');
   }
-
 }

@@ -23,5 +23,4 @@ from codigo_penal.schema import schema
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-
 ]

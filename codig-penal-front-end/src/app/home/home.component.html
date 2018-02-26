@@ -3,7 +3,7 @@
       <ng-template ngbSlide>
         <img class="foto"src="assets/merida.jpg"  alt="Random first slide">
         <div class="carousel-caption">
-          <h1 class= "femi">Bienvenido al código penal del Estado de Yucatán</h1>
+          <h1 class= "femi">Bienvenido al Código Penal del Estado de Yucatán</h1>
           <h4 class="femi">Aquí encontrarás resúmenes y clasificaciones de los artículos y capítulos</h4>
         </div>
       </ng-template>
@@ -80,7 +80,7 @@
               <p class="card-text">{{dato.node.description}}</p>
             </div>
             <div class="card-footer">
-              <a href="/titulos/capitulo/{{dato.node.name}}" class="btn btn-primary">Ver más</a>
+              <a routerLink="/titulos/capitulo/{{dato.node.name}}" class="btn btn-primary">Ver más</a>
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@
           <div class="">
             <div class="card-body text-center">
               <!-- <h2 class="card-title">Reglamento de vialidad</h2> -->
-              <p class="card-text" ><img class="text_img" src="assets/legislacion.jpg" alt=""></p>
+              <!-- <p class="card-text" ><img class="text_img" src="assets/legislacion.jpg" alt=""></p> -->
               <!-- <a target="_blank" href="http://www.yucatan.gob.mx/docs/pdf/Reglamento_vialidad.pdf" class="btn primary">¡Saber más!</a> -->
             </div>
           </div>

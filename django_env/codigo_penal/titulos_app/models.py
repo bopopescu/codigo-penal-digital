@@ -19,6 +19,11 @@ class Article(models.Model):
     chapter = models.ForeignKey('titulos_app.Chapter')
 
 
+class ArticleList(models.Model):
+    article = models.ForeignKey('titulos_app.Article')
+    item = models.CharField(max_length=1000)
+
+
 class CrimeType(models.Model):
     crime_name = models.CharField(max_length=400)
     description = models.CharField(max_length=400)

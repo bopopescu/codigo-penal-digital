@@ -3,7 +3,7 @@ from graphene import relay, ObjectType, AbstractType
 from graphene_django.types import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-from .models import Title, Chapter, Article, CategoryCrime, Category, CrimeType
+from .models import Title, Chapter, Article, ArticleList, CategoryCrime, Category, CrimeType
 
 
 class TitleType(DjangoObjectType):
@@ -20,6 +20,13 @@ class TitleNode(DjangoObjectType):
     class Meta:
         model = Title
         filter_fields = ['name', 'description']
+        interfaces = (relay.Node, )
+
+
+class ArticleListNode(DjangoObjectType):
+    class Meta:
+        model = ArticleList
+        filter_fields = ['article', 'item']
         interfaces = (relay.Node, )
 
 
@@ -58,9 +65,16 @@ class CategoryCrimeNode(DjangoObjectType):
         interfaces = (relay.Node, )
 
 
+class test(ObjectType):
+    value = graphene.String()
+
+    def resolve_value(self, info):
+        return value
+
+
 class Query(object):
-    title2 = graphene.Field(
-        TitleType, id=graphene.Int(), name=graphene.String())
+
+    title2 = graphene.Field(test, id=graphene.Int(), name=graphene.String())
     all_tit = graphene.List(TitleType)
 
     def resolve_title2(self, info, **kwargs):
@@ -68,7 +82,8 @@ class Query(object):
         name = kwargs.get('name')
 
         if name is not None:
-            return Title.objects.get(name=name)
+            return name
+            # Title.objects.get(name=name)
         if id is not None:
             return Title.objects.get(pk=id)
         return None
@@ -86,6 +101,9 @@ class Query(object):
 
     chapter = relay.Node.Field(ChapterNode)
     all_Chapters = DjangoFilterConnectionField(ChapterNode)
+
+    articleList = relay.Node.Field(ArticleListNode)
+    all_Articles_List = DjangoFilterConnectionField(ArticleListNode)
 
     article = relay.Node.Field(ArticleNode)
     all_Articles = DjangoFilterConnectionField(ArticleNode)

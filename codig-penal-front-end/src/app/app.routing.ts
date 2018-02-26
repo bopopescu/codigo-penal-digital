@@ -29,10 +29,10 @@ const appRoutes: Routes = [
     path: 'contacto',
     component: ContactComponent
   },
-  {
-    path: 'about-us',
-    component: AboutUsComponent
-  },
+  // {
+  //   path: 'about-us',
+  //   component: AboutUsComponent
+  // },
   {
     path: '**',
     component: NotFoundComponent
