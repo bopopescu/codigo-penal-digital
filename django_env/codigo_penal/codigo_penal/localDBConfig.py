@@ -1,6 +1,6 @@
 # NAME = 'codigo_penal'
 # USER = 'C192604'
-# PASSWORD = 'mastercuellodbinstance'
+# PASSWORD = 'maincuellodbinstance'
 # HOST = 'cuellodbinstance.cljdcjqyqtfn.us-west-1.rds.amazonaws.com'
 # PORT = '3306'
 
